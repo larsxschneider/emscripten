@@ -42,3 +42,16 @@ set(CMAKE_C_ARCHIVE_CREATE "${CMAKE_C_COMPILER} -o <TARGET> -emit-llvm <LINK_FLA
 # Set a global EMSCRIPTEN variable that can be used in client CMakeLists.txt to detect when building using Emscripten.
 # There seems to be some kind of bug with CMake, so you might need to define this manually on the command line with "-DEMSCRIPTEN=1".
 set(EMSCRIPTEN 1)
+
+# Set initial flags
+set(CMAKE_C_FLAGS_INIT                "-Wall")
+set(CMAKE_C_FLAGS_DEBUG_INIT          "-g")
+set(CMAKE_C_FLAGS_MINSIZEREL_INIT     "-O2 -DNDEBUG")
+set(CMAKE_C_FLAGS_RELEASE_INIT        "-O2 -DNDEBUG")
+set(CMAKE_C_FLAGS_RELWITHDEBINFO_INIT "-O2 -g")
+
+set(CMAKE_CXX_FLAGS_INIT                "-Wall")
+set(CMAKE_CXX_FLAGS_DEBUG_INIT          "-g")
+set(CMAKE_CXX_FLAGS_MINSIZEREL_INIT     "-O2 -DNDEBUG")
+set(CMAKE_CXX_FLAGS_RELEASE_INIT        "-O2 -DNDEBUG")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT "-O2 -g")
