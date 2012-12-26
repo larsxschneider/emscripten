@@ -60,3 +60,13 @@ set(CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT "-O2 -g")
 macro (emscripten_add_js_library _library)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --js-library \"${_library}\"")
 endmacro (emscripten_add_js_library)
+
+# Export functions to use them from Javascript context.
+macro (emscripten_export_functions _first_function_name)
+    set(functions_string "'_${_first_function_name}'")
+	foreach(function_name ${ARGN})
+    	set(functions_string "${functions_string}, '_${function_name}'")
+   endforeach(function_name)
+
+   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s EXPORTED_FUNCTIONS=\"[${functions_string}]\"")
+endmacro (emscripten_export_functions)
