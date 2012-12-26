@@ -55,3 +55,8 @@ set(CMAKE_CXX_FLAGS_DEBUG_INIT          "-g")
 set(CMAKE_CXX_FLAGS_MINSIZEREL_INIT     "-O2 -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE_INIT        "-O2 -DNDEBUG")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT "-O2 -g")
+
+# Add a Javascript library. Pass library with path as parameter (e.g. ${SRC_DIR}/ctags-glue.js)
+macro (emscripten_add_js_library _library)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --js-library \"${_library}\"")
+endmacro (emscripten_add_js_library)
